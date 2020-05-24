@@ -16,4 +16,9 @@ class DatabaseService {
       'strength': strength,
     });
   }
+
+  // get record stream
+  Stream<QuerySnapshot> get records {
+    return recordCollection.snapshots();
+  }
 }
