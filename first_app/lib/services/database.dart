@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:first_app/models/record.dart';
 
 class DatabaseService {
   final String uid;
@@ -17,8 +18,20 @@ class DatabaseService {
     });
   }
 
+  // records list from snapshot
+  List<Record> _recordListFromSnapshot(QuerySnapshot snapshot) {
+    return snapshot.documents.map((doc) {
+      return Record(
+        name: doc.data['name'] ?? '',
+        sugar: doc.data['sugar'] ?? '0',
+        strength: doc.data['strength'] ?? 0,
+      );
+    }).toList();
+  }
+
   // get record stream
-  Stream<QuerySnapshot> get records {
-    return recordCollection.snapshots();
+  Stream<List<Record>> get records {
+    return recordCollection.snapshots()
+    .map(_recordListFromSnapshot);
   }
 }
