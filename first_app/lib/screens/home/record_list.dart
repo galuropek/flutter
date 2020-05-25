@@ -11,7 +11,7 @@ class RecordList extends StatefulWidget {
 class _RecordListState extends State<RecordList> {
   @override
   Widget build(BuildContext context) {
-    final records = Provider.of<List<Record>>(context);
+    final records = Provider.of<List<Record>>(context) ?? [];
     records.forEach((record) {
       print(record.name);
       print(record.sugar);

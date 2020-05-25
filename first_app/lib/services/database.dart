@@ -24,7 +24,7 @@ class DatabaseService {
     return snapshot.documents.map((doc) {
       return Record(
         name: doc.data['name'] ?? '',
-        sugar: doc.data['sugar'] ?? '0',
+        sugar: doc.data['sugars'] ?? '0',
         strength: doc.data['strength'] ?? 0,
       );
     }).toList();
