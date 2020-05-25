@@ -19,8 +19,9 @@ class _RecordListState extends State<RecordList> {
     });
 
     return ListView.builder(
-        itemCount: records.length, itemBuilder: (context, index) {
+        itemCount: records.length,
+        itemBuilder: (context, index) {
           return RecordTile(record: records[index]);
-    });
+        });
   }
 }
