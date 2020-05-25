@@ -16,6 +16,7 @@ class RecordTile extends StatelessWidget {
           leading: CircleAvatar(
             radius: 25.0,
             backgroundColor: Colors.brown[record.strength],
+            backgroundImage: AssetImage('assets/coffee_icon.png'),
           ),
           title: Text(record.name),
           subtitle: Text('Takes ${record.sugar} sugar(s)'),
