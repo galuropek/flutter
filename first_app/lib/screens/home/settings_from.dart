@@ -21,7 +21,8 @@ class _SettingsFormState extends State<SettingsForm> {
       key: _formKey,
       child: Column(
         children: <Widget>[
-          Text('Update your settings',
+          Text(
+            'Update your settings',
             style: TextStyle(fontSize: 18.0),
           ),
           SizedBox(
@@ -34,8 +35,26 @@ class _SettingsFormState extends State<SettingsForm> {
           ),
           SizedBox(height: 20.0),
           //dropdown
+          DropdownButtonFormField(
+            decoration: textInputDecoration,
+            value: _currentSugars ?? '0',
+            items: sugars.map((sugar) {
+              return DropdownMenuItem(
+                  child: Text('$sugar sugars'), value: sugar);
+            }).toList(),
+            onChanged: (val) => setState(() => _currentSugars = val),
+          ),
           //slider
-      ],
+          RaisedButton(
+            onPressed: () async {
+              print(_currentName);
+              print(_currentSugars);
+              print(_currentStrength);
+            },
+            color: Colors.orange,
+            child: Text('Update', style: TextStyle(color: Colors.white)),
+          )
+        ],
       ),
     );
   }
