@@ -27,7 +27,6 @@ class _SettingsFormState extends State<SettingsForm> {
         stream: DatabaseService(uid: user.uid).userData,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-
             UserData userData = snapshot.data;
             return Form(
               key: _formKey,
@@ -61,8 +60,10 @@ class _SettingsFormState extends State<SettingsForm> {
                   //slider
                   Slider(
                       value: (_currentStrength ?? userData.strength).toDouble(),
-                      activeColor: Colors.brown[_currentStrength ?? userData.strength],
-                      inactiveColor: Colors.brown[_currentStrength ?? userData.strength],
+                      activeColor:
+                          Colors.brown[_currentStrength ?? userData.strength],
+                      inactiveColor:
+                          Colors.brown[_currentStrength ?? userData.strength],
                       min: 100.0,
                       max: 900.0,
                       divisions: 8,
@@ -71,6 +72,14 @@ class _SettingsFormState extends State<SettingsForm> {
                   // button
                   RaisedButton(
                     onPressed: () async {
+                      if (_formKey.currentState.validate()) {
+                        await DatabaseService(uid: user.uid).updateUserData(
+                          _currentSugars ?? userData.sugars,
+                          _currentName ?? userData.name,
+                          _currentStrength ?? userData.strength,
+                        );
+                        Navigator.pop(context);
+                      }
                       print(_currentName);
                       print(_currentSugars);
                       print(_currentStrength);
