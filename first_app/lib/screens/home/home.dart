@@ -11,7 +11,6 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     void _showSettingsPanel() {
       showModalBottomSheet(context: context, builder: (context) {
         return Container(
@@ -27,7 +26,7 @@ class Home extends StatelessWidget {
           backgroundColor: Colors.blueGrey,
           appBar: AppBar(
             title: Text('Welcome to Home page ;)'),
-            backgroundColor: Colors.lightGreen,
+            backgroundColor: Colors.orange,
             elevation: 0.0,
             actions: <Widget>[
               FlatButton.icon(
@@ -44,7 +43,14 @@ class Home extends StatelessWidget {
                   label: Text('settings'))
             ],
           ),
-          body: RecordList(),
+          body: Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/coffee_bg.png'),
+                    fit: BoxFit.cover,
+                ),
+              ),
+              child: RecordList()),
         ));
   }
 }
