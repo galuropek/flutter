@@ -23,7 +23,7 @@ class TimeManager extends StatefulWidget {
 }
 
 class _TimeManagerState extends State<TimeManager> {
-  final Stopwatch stopwatch = new Stopwatch()..start();
+  final Stopwatch stopwatch = new Stopwatch();
   var time = 0;
 
   @override
@@ -38,7 +38,23 @@ class _TimeManagerState extends State<TimeManager> {
                   time = stopwatch.elapsedMicroseconds;
                 });
               },
-              child: Text('Show time'))
+              child: Text('Show time')),
+          RaisedButton(
+            onPressed: () {
+              setState(() {
+                stopwatch.start();
+              });
+            },
+            child: Text('Start stopwatch'),
+          ),
+          RaisedButton(
+            onPressed: () {
+              setState(() {
+                stopwatch.stop();
+              });
+            },
+            child: Text('Stop stopwatch'),
+          )
         ],
       ),
     );
