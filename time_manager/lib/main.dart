@@ -25,13 +25,15 @@ class TimeManager extends StatefulWidget {
 class _TimeManagerState extends State<TimeManager> {
   final Stopwatch stopwatch = new Stopwatch();
   var time = 0;
+  var current_time_in_seconds = 0;
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Column(
         children: <Widget>[
-          Text('$time'),
+          Text('time_var: $time'),
+          Text('current_time_in_seconds_var: $current_time_in_seconds'),
           RaisedButton(
               onPressed: () {
                 setState(() {
@@ -54,6 +56,14 @@ class _TimeManagerState extends State<TimeManager> {
               });
             },
             child: Text('Stop stopwatch'),
+          ),
+          RaisedButton(
+            onPressed: () {
+              setState(() {
+                current_time_in_seconds = stopwatch.elapsed.inSeconds;
+              });
+            },
+            child: Text('Current time in seconds'),
           )
         ],
       ),
